@@ -1,0 +1,25 @@
+<h1>Listing reviews</h1>
+
+<table>
+  <tr>
+    <th>Comment</th>
+    <th>Restaurant</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reviews.each do |review| %>
+  <tr>
+    <td><%= review.comment %></td>
+    <td><%= review.restaurant %></td>
+    <td><%= link_to 'Show', [review.restaurant, review] %></td>
+    <td><%= link_to 'Edit', edit_restaurant_review_path(review.restaurant, review) %></td>
+    <td><%= link_to 'Destroy', [review.restaurant, review], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Review', new_restaurant_review_path(params[:restaurant_id]) %>
